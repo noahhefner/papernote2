@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h3>Filters</h3>
+    <form action="/submit">
+        {{ range .Filters }}
+          {{ $tagname := .TagName }}
+          <h3>{{ .DisplayText }}</h3>
+          {{ range .Options }}
+            <input type="checkbox" id="{{ .TagValue }}" name="{{ $tagname }}" value="{{ .TagValue }}">
+            <label for="{{ .TagValue }}">{{ .DisplayText }}</label>
+          {{ end }}
+        {{ end }}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

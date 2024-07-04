@@ -1,0 +1,18 @@
+
+filters:
+  - tagname: maintainer
+    displaytext: Maintainer
+    options:
+      - tagvalue: maint1
+        displaytext: Maintainer 1
+      - tagvalue: maint2
+        displaytext: Maintainer 2
+      - tagvalue: maint3
+        displaytext: Maintainer 3
+  - tagname: type
+    displaytext: Document Type
+    options:
+      - tagvalue: specification
+        displaytext: Specifications
+      - tagvalue: report
+        displaytext: Reports
