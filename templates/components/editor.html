@@ -1,0 +1,32 @@
+<div id="editor"></div>
+<script type="module">
+  import {
+    ClassicEditor,
+    Essentials,
+    Bold,
+    Italic,
+    Paragraph,
+    Markdown,
+    Heading,
+    CodeBlock,
+  } from "ckeditor5";
+
+  ClassicEditor.create(document.querySelector("#editor"), {
+    plugins: [CodeBlock, Markdown, Heading, Essentials, Bold, Italic, Paragraph],
+    toolbar: {
+      items: [
+        "heading",
+        "undo",
+        "redo",
+        "|",
+        "bold",
+        "italic",
+        "codeBlock",
+      ],
+    },
+  })
+    .then(editor => {
+      editor.setData({{ .Content }});
+    })
+    .catch(/* ... */);
+</script>

@@ -1,3 +1,8 @@
-<div id="file-contents">
-  {{ .Content }}
-</div>
+<i 
+  class="bi bi-pen"
+  hx-get="editor?filename={{ .Filename }}"
+  hx-target="#file-contents"
+  hx-swap="outerHTML"
+  hx-trigger="click"
+></i>
+<div id="file-contents">{{ .Content }}</div>

@@ -13,7 +13,12 @@ import (
 	"net/http"
 )
 
+type editorContext struct {
+	Content string
+}
+
 type renderedContentContext struct {
+	Filename	string
 	Content template.HTML
 }
 
@@ -43,6 +48,36 @@ func HandleHome(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func HandleGetEditor (w http.ResponseWriter, r *http.Request) {
+
+	filename := r.FormValue("filename")
+
+	path := path.Join("notes", filename)
+
+	content, err := os.ReadFile(path)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	templateContext := editorContext {
+		Content: string(content),
+	}
+
+  t, err := template.ParseFiles("templates/components/editor.html")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	err = t.Execute(w, templateContext)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+
+}
+
 func HandleGetContentsRendered(w http.ResponseWriter, r *http.Request) {
 	
 	filename := r.FormValue("filename")
@@ -53,6 +88,7 @@ func HandleGetContentsRendered(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	extensions := parser.CommonExtensions | parser.AutoHeadingIDs | parser.NoEmptyLineBeforeBlock
@@ -65,6 +101,7 @@ func HandleGetContentsRendered(w http.ResponseWriter, r *http.Request) {
 	renderer := html.NewRenderer(opts)
 
 	templateContext := renderedContentContext {
+		Filename: filename,
 		Content: template.HTML(markdown.Render(doc, renderer)),
 	}
 

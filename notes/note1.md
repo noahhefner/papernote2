@@ -55,7 +55,7 @@ semper? Pallebant Pelasgos nescit?
 
 Tu callidus, mihi memini, Chromis erit, inmunitamque auras! Semel cadit veste,
 **qui pompas ardebat** tribuente dote, solitis. Cerebro sacrorum et profecit
-salientis *mulcendas* indigenaene, ante atque defendere peremptis strigis!
+salientis _mulcendas_ indigenaene, ante atque defendere peremptis strigis!
 
 Crimenque Hodites potae fatorum monitusque aere admissum? In leves patre vapore
 non timidae te Erinys; que in Helops tela bina. Nec habebatur; erat ipsa altae
@@ -65,4 +65,3 @@ Achillem credit: sic captis cruore! Est ut simillima forma ingentique Thebae
 habent flumina. Sit nocendo tuas haec non capillis adest. Unum ego tamen,
 falsamque Cerealia **admonitus et** accipit poplitibus pectus siccata: contraria
 anus. Sacrifica lumina **parce**, cognosci mundi in Veneris duabus, insibilat!
-

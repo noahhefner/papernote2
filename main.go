@@ -13,6 +13,8 @@ func main() {
 	router.HandleFunc("GET /login", handlers.HandleLogin)
 	router.HandleFunc("GET /home", handlers.HandleHome)
 
+	router.HandleFunc("GET /editor", handlers.HandleGetEditor)
+
 	router.HandleFunc("GET /static/png/logo.png", handlers.HandleLogo)
 
 	router.HandleFunc("GET /documentContentRendered", handlers.HandleGetContentsRendered)
