@@ -15,6 +15,8 @@ func main() {
 
 	router.HandleFunc("GET /static/png/logo.png", handlers.HandleLogo)
 
+	router.HandleFunc("GET /documentContentRendered", handlers.HandleGetContentsRendered)
+
 	fmt.Println("Running server at localhost:8080")
 
 	err := http.ListenAndServe(":8080", router)
