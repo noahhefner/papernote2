@@ -1,10 +1,20 @@
 package handlers
 
 import (
+	"html/template"
 	"net/http"
-	"fmt"
 )
 
-func HandleLogin (w http.ResponseWriter, r *http.Request) {
-	fmt.Println("You loggin in bro")
+func HandleLogin(w http.ResponseWriter, r *http.Request) {
+
+	t, err := template.ParseFiles("templates/pages/login.html")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	err = t.Execute(w, nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
 }
