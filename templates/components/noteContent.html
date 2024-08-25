@@ -1,8 +1,14 @@
-<i 
-  class="bi bi-pen"
-  hx-get="editor?filename={{ .Filename }}"
-  hx-target="#file-contents"
-  hx-swap="outerHTML"
-  hx-trigger="click"
-></i>
+<div class="mb-2">
+  <button 
+    type="button" 
+    class="btn btn-primary btn-sm"
+    hx-get="editor?filename={{ .Filename }}"
+    hx-target="#file-contents"
+    hx-swap="innerHTML"
+    hx-trigger="click"
+  >
+    <i class="bi bi-pen"></i>
+    Edit
+  </button>
+</div>
 <div id="file-contents">{{ .Content }}</div>

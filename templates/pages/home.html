@@ -58,17 +58,9 @@
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          <button class="btn btn-danger btn-sm">
+            Logout
+          </button>
         </div>
       </div>
     </nav>
@@ -80,7 +72,7 @@
             <li
               class="list-group-item cursor-pointer"
               hx-get="/documentContentRendered?filename={{ . }}"
-              hx-swap="outerHTML"
+              hx-swap="innerHTML"
               hx-target="#file-contents"
               hx-trigger="click"
             >

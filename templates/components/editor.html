@@ -1,4 +1,8 @@
-<div id="editor"></div>
+<script>
+document.body.addEventListener('htmx:configRequest', function(evt) {
+  console.log(evt);
+});
+</script>
 <script type="module">
   import {
     ClassicEditor,
@@ -10,6 +14,8 @@
     Heading,
     CodeBlock,
   } from "ckeditor5";
+
+  const editor;
 
   ClassicEditor.create(document.querySelector("#editor"), {
     plugins: [CodeBlock, Markdown, Heading, Essentials, Bold, Italic, Paragraph],
@@ -25,11 +31,26 @@
       ],
     },
   })
-    .then(editor => {
-
-      //editor.ui.addButton(
-
-      editor.setData({{ .Content }});
+    .then(newEditor => {
+      newEditor.setData({{ .Content }});
+      editor = newEditor;
     })
     .catch(/* ... */);
 </script>
+<div class="mb-2">
+  <button 
+    type="button" 
+    class="btn btn-primary btn-sm"
+    hx-trigger="click"
+    hx-swap="none"
+    hx-post="/api/document/save"
+    hx-vals='{
+               "content": "something" 
+             }'
+  >
+    Save
+  </button>
+  <button type="button" class="btn btn-danger btn-sm">Cancel</button>
+</div>
+<div id="editor"></div>
+
