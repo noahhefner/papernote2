@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/static/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/ckeditor/ckeditor5-content.css" />
+    <link rel="stylesheet" href="/static/ckeditor/ckeditor5-editor.css" />
+    <link rel="stylesheet" href="/static/ckeditor/ckeditor5.css" />
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "ckeditor5": "/static/ckeditor/ckeditor5.js",
+          "ckeditor5/": "/static/ckeditor/"
+        }
+      }
+    </script>
+    <script type="module">
+      import {
+        ClassicEditor,
+        Essentials,
+        Bold,
+        Italic,
+        Paragraph,
+        Markdown,
+        Heading,
+        CodeBlock,
+      } from "ckeditor5";
+
+      ClassicEditor.create(document.getElementById("editor"), {
+        plugins: [CodeBlock, Markdown, Heading, Essentials, Bold, Italic, Paragraph],
+        toolbar: {
+          items: [
+            "heading",
+            "undo",
+            "redo",
+            "|",
+            "bold",
+            "italic",
+            "codeBlock",
+          ],
+        },
+      })
+        .then(newEditor => {
+          newEditor.setData({{ . }});
+        })
+        .catch();
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="/home">
+          <img src="/static/png/logo.png" alt="logo" width="48" height="48" />
+          Papernote
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+          </ul>
+          <button class="btn btn-danger btn-sm">Logout</button>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="editor">
+        <!-- Editor Here -->
+      </div>
+    </div>
+   </body>
+</html>

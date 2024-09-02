@@ -10,14 +10,14 @@ func main() {
 
 	router := http.NewServeMux()
 
+	// pages
 	router.HandleFunc("GET /login", handlers.HandleLogin)
 	router.HandleFunc("GET /home", handlers.HandleHome)
+	router.HandleFunc("GET /note/editor", handlers.HandleGetEditor)
+	router.HandleFunc("GET /note/view", handlers.HandleGetRendered)
 
-	router.HandleFunc("GET /editor", handlers.HandleGetEditor)
-
-	router.HandleFunc("GET /static/png/logo.png", handlers.HandleLogo)
-
-	router.HandleFunc("GET /documentContentRendered", handlers.HandleGetContentsRendered)
+	// static files
+	router.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
 	fmt.Println("Running server at localhost:8080")
 

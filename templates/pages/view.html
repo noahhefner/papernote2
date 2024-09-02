@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/bootstrap/bootstrap.min.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="/home">
+          <img src="/static/png/logo.png" alt="logo" width="48" height="48" />
+          Papernote
+        </a>
+      </div>
+    </nav>
+    <div class="container">
+      {{ .Filename }}
+      {{ .Content }} 
+    </div>
+  </body>
+</html>

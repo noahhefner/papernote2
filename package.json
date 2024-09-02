@@ -1,13 +1,11 @@
 {
   "scripts": {
-     "build-go": "go build",
-     "build-css": "sass static/sass static/css",
-     "build": "concurrently \"npm run build-go\" \"npm run build-css\"",
-     "dev-go": "air",
-     "dev-css": "sass --watch static/sass static/css",
-     "dev": "concurrently \"npm run run-go\" \"npm run run-css\""
+    "build": "go build",
+    "dev": "air",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "prettier": "3.3.3"
+    "prettier": "^3.3.3"
   }
 }
